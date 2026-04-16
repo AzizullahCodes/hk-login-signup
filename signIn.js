@@ -23,7 +23,13 @@ let requiredUser = jsonData.find((one)=>{
 })
 
 if(requiredUser){
-    alert('login successfull')
+    console.log(requiredUser.id)
+    // store only the id of the person who jsut loggedIn
+    localStorage.setItem('loggedInUserId', requiredUser.id)
+    alert('login successfull');
+    
+    window.location.href = './home.html'
+    
 }
 else {
     alert('Invalid email or password')

@@ -5,6 +5,11 @@ let nameInput = document.getElementById('name');
 let emailInput = document.getElementById('email');
 let passwordInput = document.getElementById('password');
 let confirmPasswordInput = document.getElementById('confirmPassword');
+// generate unique id function 
+function generateId(){
+    return Date.now();
+}
+// console.log(generateId())
 function signUp(){
     let userName = nameInput.value;
     let email = emailInput.value;
@@ -29,11 +34,14 @@ function signUp(){
     // check if email already exists 
     if(isEmailExisted){
         alert('Account already exists with this email');
-        return
+        window.location.href='./signIn.html'
+        
     }
     // if accont already not exist than create newUser 
     // we can use here enhanced object literals also
-    let newUser = {
+    else{
+        let newUser = {
+            id : generateId(),
        userName,
        email,
        password,
@@ -44,6 +52,9 @@ function signUp(){
     localStorage.setItem('users',users);
 
     alert('Accont created successfully');
+    // redirect user to signIn page
+    window.location.href ='./signIn.html';
+    }
 
     // calling clearInput function 
     clearInput()
